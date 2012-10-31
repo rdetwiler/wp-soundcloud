@@ -1,0 +1,34 @@
+/*
+  Plugin Name: SoundCloud Manager
+  Plugin URI: http://www.45press.com
+  Description: Provides SoundCloud dashboard functionality in WordPress.
+  Version: 1.0
+  Author: James Fortunato
+  Author URI: http://www.45press.com
+  License: GPL2
+ */
+ 
+ .soundcloud-icon 
+ {
+	padding-top: 18px;
+	float: right;
+	padding-right: 10px
+ }
+ 
+/* tags */
+#tags {
+	display: inline-block;
+	margin: 0 0 15px;
+}
+#tags li {
+	background: #0066cc;
+	float: left;
+	color: #fff;
+	margin: 0 0 5px 5px;
+	padding: 0 7px;
+	font-size: .75em;
+	cursor: pointer;
+	border: none;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+}
