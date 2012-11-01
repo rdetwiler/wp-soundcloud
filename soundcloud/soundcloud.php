@@ -95,8 +95,8 @@ function sc_render_form() {
 		<div class="icon32" id="icon-options-general"><br></div>
 		<h2>Soundcloud Test Settings Page</h2>
 		<p>Please enter the details from your SoundCloud application page. You can create a new SoundCloud application <a href="http://soundcloud.com/you/apps" target="_blank">HERE</a>.
-		</br></br><strong>Your unique callback URL is: </strong><?php echo site_url();?>/wp-admin/admin.php?page=soundcloud-manager</p>
-		<strong>Please copy and paste the callback URL into your SoundCloud app, as well as the form below.</strong>
+		</br></br><strong>Your Redirect URI for Authentication is: </strong><?php echo site_url();?>/wp-admin/admin.php?page=soundcloud-manager</p>
+		<strong>Please copy and paste the Redirect URI for Authentication into your SoundCloud app, as well as the form below.</strong>
 
 		<!-- Beginning of the Plugin Options Form -->
 		<form method="post" action="options.php">
@@ -117,7 +117,7 @@ function sc_render_form() {
 					</td>
 				</tr>				
 				<tr>
-					<th scope="row">Callback URL</th>
+					<th scope="row">Redirect URI for Authentication</th>
 					<td>
 						<input type="text" size="57" name="sc_options[callback_url]" value="<?php echo $options['callback_url']; ?>" />
 					</td>
@@ -209,10 +209,10 @@ function sc_render_manager_page() {
 			var_dump($e->getMessage());
 			exit();			
 		}		
-		echo 'Logged in as: <strong>' . $me['username'] . '</strong>.</br>';	
+		echo '<h3>Logged in as: ' . $me['username'] . '</h3>';	
 	}
 	else {
-		echo '<strong>Not logged in.</strong>';	
+		echo '<h3>Not logged in.</h3>';	
 	}
 
 	switch ($tab){
@@ -221,12 +221,30 @@ function sc_render_manager_page() {
 				$me = json_decode($client->get('me'), true);
 				?>
 				<form action="" method="post">
-					<p>Username:<br><input type="text" name="username" value="<?php echo $me['username']; ?>" size="30"></p>
-					<p>Permalink:<br><input type="text" name="permalink" value="<?php echo $me['permalink']; ?>" size="30"></p>
-					<p>Description:<br><input type="text" name="description" value="<?php echo $me['description']; ?>" size="30"></p>
-					<p>Website:<br><input type="text" name="website" value="<?php echo $me['website']; ?>" size="30"></p>
-					<p>Website Name:<br><input type="text" name="website_title" value="<?php echo $me['website_title']; ?>" size="30"></p>
-					<input type="submit" value="Update Account">
+					<table class="form-table">
+						<tr valign="top">
+						  <th scope="row"><label for="username">Username:</label></th>
+						  <td><input type="text" name="username" value="<?php echo $me['username']; ?>" size="30" class="regular-text code"></td>
+						</tr>
+						<tr valign="top">
+						  <th scope="row"><label for="permalink">Permalink:</label></th>
+						  <td><input type="text" name="permalink" value="<?php echo $me['permalink']; ?>" size="30" class="regular-text code"></td>
+						</tr>
+						<tr valign="top">
+						  <th scope="row"><label for="description">Description:</label></th>
+						  <td><input type="text" name="description" value="<?php echo $me['description']; ?>" size="30" class="regular-text code"></td>
+						</tr>
+						<tr valign="top">
+						  <th scope="row"><label for="website">Website:</label></th>
+						  <td><input type="text" name="website" value="<?php echo $me['website']; ?>" size="30" class="regular-text code"></td>
+						</tr>
+						<tr valign="top">
+						  <th scope="row"><label for="website_title">Website Name:</label></th>
+						  <td><input type="text" name="website_title" value="<?php echo $me['website_title']; ?>" size="30" class="regular-text code"></td>
+						</tr>
+					</table>
+					<p class="submit"><input type="submit" value="Update Account" class="button-primary"></p>
+					
 				</form>
 				<?php
 				if (isset($_POST['username']) || isset($_POST['permalink']) || isset($_POST['description']) || isset($_POST['website']) || isset($_POST['website_title'])) {
@@ -248,19 +266,33 @@ function sc_render_manager_page() {
 		case 'upload' :
 			?>	
 			<form action="" enctype="multipart/form-data" method="post" id ="add_track">
-			<p>Track title:<br><input type="text" name="track_title" size="30"></p>
-			<p>Please specify a track:<br><input type="file" name="track_file" id="track_file" size="40" accept="audio/*"></p>			
-			<p>Please specify track artwork:<br><input type="file" name="track_art" id="track_art" size="40" accept="image/*"></p>	
-			<p>Track tags:<br><input type="text" name="tag" id="tag" size="30"><input type="button" id="add_tag" name="add_tag" class="button" value="Add Tag" /></p>
-			<ul id="tags"></ul>
-			<p>Track privacy:<br>
-			<select name="sharing">
-				<option value="public">Public</option>
-				<option value="private">Private</option>
-			</select></p>
-			<div>
-				<input type="submit" value="Upload">
-			</div>
+				<table class="form-table">
+					<tr valign="top">
+					  <th scope="row"><label for="track_title2">Track title:</label></th>
+					  <td><input type="text" name="track_title2" size="30" class="regular-text code"></td>
+					</tr>
+					<tr valign="top">
+					  <th scope="row"><label for="track_file2">Please specify a track:</label></th>
+					  <td><input type="file" name="track_file2" id="track_file2" size="40" accept="audio/*" class="regular-text code"></td>
+					</tr>
+					<tr valign="top">
+					  <th scope="row"><label for="track_art2">Please specify track artwork:</label></th>
+					  <td><input type="file" name="track_art2" id="track_art2" size="40" accept="image/*" class="regular-text code"></td>
+					</tr>
+					<tr valign="top">
+					  <th scope="row"><label for="tag">Track tags:</label></th>
+					  <td><input type="text" name="tag" id="tag" size="30"><input type="button" id="add_tag" name="add_tag" class="button" value="Add Tag" />
+						<br><ul id="tags"></ul></td>
+					</tr>
+					<tr valign="top">
+					  <th scope="row"><label for="website_title">Track privacy:</label></th>
+					  <td><select name="sharing2">
+						<option value="public">Public</option>
+						<option value="private">Private</option>
+					  </select></td>
+					</tr>
+					</table>
+			<p class="submit"><input type="submit" value="Upload" class="button-primary"></p>
 			</form>					
 			<?php
 			try {
@@ -351,6 +383,7 @@ function sc_disconnect() {
 	delete_option('soundcloud_token_expiration');
 	wp_redirect(admin_url('admin.php?page=soundcloud-manager'));
 }
+
 
 function sc_admin_tabs( $current = 'user' ) {
     $tabs = array( 'user' => 'User Information', 'upload' => 'Upload Track', 'tracks' => 'View Tracks' );
