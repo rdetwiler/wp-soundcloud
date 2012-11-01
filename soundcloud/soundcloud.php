@@ -268,16 +268,16 @@ function sc_render_manager_page() {
 			<form action="" enctype="multipart/form-data" method="post" id ="add_track">
 				<table class="form-table">
 					<tr valign="top">
-					  <th scope="row"><label for="track_title2">Track title:</label></th>
-					  <td><input type="text" name="track_title2" size="30" class="regular-text code"></td>
+					  <th scope="row"><label for="track_title">Track title:</label></th>
+					  <td><input type="text" name="track_title" size="30" class="regular-text code"></td>
 					</tr>
 					<tr valign="top">
-					  <th scope="row"><label for="track_file2">Please specify a track:</label></th>
-					  <td><input type="file" name="track_file2" id="track_file2" size="40" accept="audio/*" class="regular-text code"></td>
+					  <th scope="row"><label for="track_file">Please specify a track:</label></th>
+					  <td><input type="file" name="track_file" id="track_file" size="40" accept="audio/*" class="regular-text code"></td>
 					</tr>
 					<tr valign="top">
-					  <th scope="row"><label for="track_art2">Please specify track artwork:</label></th>
-					  <td><input type="file" name="track_art2" id="track_art2" size="40" accept="image/*" class="regular-text code"></td>
+					  <th scope="row"><label for="track_art">Please specify track artwork:</label></th>
+					  <td><input type="file" name="track_art" id="track_art" size="40" accept="image/*" class="regular-text code"></td>
 					</tr>
 					<tr valign="top">
 					  <th scope="row"><label for="tag">Track tags:</label></th>
@@ -285,8 +285,8 @@ function sc_render_manager_page() {
 						<br><ul id="tags"></ul></td>
 					</tr>
 					<tr valign="top">
-					  <th scope="row"><label for="website_title">Track privacy:</label></th>
-					  <td><select name="sharing2">
+					  <th scope="row"><label for="sharing">Track privacy:</label></th>
+					  <td><select name="sharing">
 						<option value="public">Public</option>
 						<option value="private">Private</option>
 					  </select></td>
